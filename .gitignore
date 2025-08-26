@@ -1,0 +1,23 @@
+# Java/Maven
+target/
+*.class
+*.log
+hs_err_pid*
+
+# IDE
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts & local stuff
+backend/app.jar
+uploads/
+cov-int/
+cov-report/
+*.zip
