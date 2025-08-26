@@ -27,7 +27,7 @@ jobs:
 
       - name: Build with Maven
         working-directory: ${{ env.WORKING_DIR }}
-        run: mvn -q -B -DskipTests package
+        run: mvn -q -B clean package
 
       - name: Prepare artifact
         working-directory: ${{ env.WORKING_DIR }}
@@ -42,3 +42,4 @@ jobs:
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ${{ env.WORKING_DIR }}/${{ env.FINAL_JAR }}
           # (no startup-command here)
+
