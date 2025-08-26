@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  backend:
+    build: ./backend
+    image: transitx/backend:demo
+    environment:
+      - VULN_MODE=on
+    ports:
+      - "8080:8080"
