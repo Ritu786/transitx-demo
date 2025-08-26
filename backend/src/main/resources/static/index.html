@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>TransitX Demo – Web UI</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>TransitX Demo</h1>
+    <p>Quick UI to drive traffic for IAST.</p>
+    <nav>
+      <a href="#wallet">Wallet</a>
+      <a href="#fines">Fines</a>
+      <a href="#trips">Trips</a>
+      <a href="#parking">Parking Upload</a>
+      <a href="#traffic">Traffic Generator</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Wallet -->
+    <section id="wallet" class="card">
+      <h2>Wallet</h2>
+      <form id="walletForm">
+        <label>Username (X-User header)
+          <input id="walletUser" placeholder="alice" value="alice" />
+        </label>
+        <button type="submit">Get Balance</button>
+      </form>
+      <pre id="walletOut" class="out"></pre>
+    </section>
+
+    <!-- Fines -->
+    <section id="fines" class="card">
+      <h2>Fines Lookup</h2>
+      <form id="finesForm">
+        <label>Plate
+          <input id="plate" placeholder="A12345" value="A12345" />
+        </label>
+        <button type="submit">Lookup</button>
+      </form>
+      <pre id="finesOut" class="out"></pre>
+    </section>
+
+    <!-- Trips -->
+    <section id="trips" class="card">
+      <h2>Trip Search</h2>
+      <form id="tripForm">
+        <label>From <input id="from" placeholder="Deira" value="Deira" /></label>
+        <label>To <input id="to" placeholder="Marina" value="Marina" /></label>
+        <label>Query (try XSS) <input id="q" value="<script>alert(1)</script>" /></label>
+        <button type="submit">Search</button>
+      </form>
+      <pre id="tripOut" class="out"></pre>
+    </section>
+
+    <!-- Parking Upload -->
+    <section id="parking" class="card">
+      <h2>Parking Document Upload</h2>
+      <form id="uploadForm">
+        <input type="file" id="uploadFile" />
+        <label>Override filename (optional, e.g. <code>../evil.txt</code>)
+          <input id="overrideName" placeholder="../evil.txt" />
+        </label>
+        <button type="submit">Upload</button>
+      </form>
+      <pre id="uploadOut" class="out"></pre>
+    </section>
+
+    <!-- Traffic Generator -->
+    <section id="traffic" class="card">
+      <h2>Traffic Generator (IAST)</h2>
+      <p>Fires a burst of requests with common attack payloads.</p>
+      <button id="goTraffic">Generate 25 Requests</button>
+      <pre id="trafficOut" class="out"></pre>
+    </section>
+
+    <!-- Health -->
+    <section class="card">
+      <h2>Health</h2>
+      <button id="checkHealth">Check /actuator/health</button>
+      <pre id="healthOut" class="out"></pre>
+    </section>
+  </main>
+
+  <footer>
+    <small>TransitX demo – served by Spring Boot static resources.</small>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
